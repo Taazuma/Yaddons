@@ -112,16 +112,16 @@ namespace Eclipse
             DrawingsMenu.CreateCheckBox("Draw damage indicator.", "damageDraw");
             DrawingsMenu.CreateCheckBox("Draw damage indicator percent.", "perDraw");
             DrawingsMenu.CreateCheckBox("Draw damage indicator statistics.", "statDraw", false);
-            DrawingsMenu.AddGroupLabel("Spells");
-            DrawingsMenu.Add("qDraw", new CheckBox("Draw Q."));
-            DrawingsMenu.CreateCheckBox("Draw W.", "wDraw");
-            DrawingsMenu.CreateCheckBox("Draw E.", "eDraw");
-            DrawingsMenu.CreateCheckBox("Draw R.", "rDraw");
-            DrawingsMenu.AddGroupLabel("Drawings Color");
-            QColorSlide = new ColorSlide(DrawingsMenu, "qColor", Color.Red, "Q Color:");
-            WColorSlide = new ColorSlide(DrawingsMenu, "wColor", Color.Purple, "W Color:");
-            EColorSlide = new ColorSlide(DrawingsMenu, "eColor", Color.Orange, "E Color:");
-            RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
+            //DrawingsMenu.AddGroupLabel("Spells");
+            //DrawingsMenu.Add("qDraw", new CheckBox("Draw Q."));
+            //DrawingsMenu.CreateCheckBox("Draw W.", "wDraw");
+            //DrawingsMenu.CreateCheckBox("Draw E.", "eDraw");
+            //DrawingsMenu.CreateCheckBox("Draw R.", "rDraw");
+            //DrawingsMenu.AddGroupLabel("Drawings Color");
+            //QColorSlide = new ColorSlide(DrawingsMenu, "qColor", Color.Red, "Q Color:");
+            //WColorSlide = new ColorSlide(DrawingsMenu, "wColor", Color.Purple, "W Color:");
+            //EColorSlide = new ColorSlide(DrawingsMenu, "eColor", Color.Orange, "E Color:");
+            //RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
             DamageIndicatorColorSlide = new ColorSlide(DrawingsMenu, "healthColor", Color.YellowGreen, "DamageIndicator Color:");
 
         }

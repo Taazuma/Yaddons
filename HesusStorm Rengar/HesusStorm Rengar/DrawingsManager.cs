@@ -24,27 +24,27 @@ namespace Eclipse
         /// <param name="args"></param>
         private static void Drawing_OnDraw(EventArgs args)
         {
-            var readyDraw = DrawingsMenu.GetCheckBoxValue("readyDraw");
+            //var readyDraw = DrawingsMenu.GetCheckBoxValue("readyDraw");
 
-            if (DrawingsMenu.GetCheckBoxValue("qDraw") && readyDraw ? Q.IsReady() : Q.IsLearned)
-            {
-                Circle.Draw(QColorSlide.GetSharpColor(), Q.Range, 1f, Player.Instance);
-            }
+            //if (DrawingsMenu.GetCheckBoxValue("qDraw") && readyDraw ? Q.IsReady() : Q.IsLearned)
+            //{
+            //    Circle.Draw(QColorSlide.GetSharpColor(), Q.Range, 1f, Player.Instance);
+            //}
 
-            if (DrawingsMenu.GetCheckBoxValue("wDraw") && readyDraw ? W.IsReady() : W.IsLearned)
-            {
-                Circle.Draw(WColorSlide.GetSharpColor(), W.Range, 1f, Player.Instance);
-            }
+            //if (DrawingsMenu.GetCheckBoxValue("wDraw") && readyDraw ? W.IsReady() : W.IsLearned)
+            //{
+            //    Circle.Draw(WColorSlide.GetSharpColor(), W.Range, 1f, Player.Instance);
+            //}
 
-            if (DrawingsMenu.GetCheckBoxValue("eDraw") && readyDraw ? E.IsReady() : E.IsLearned)
-            {
-                Circle.Draw(EColorSlide.GetSharpColor(), E.Range, 1f, Player.Instance);
-            }
+            //if (DrawingsMenu.GetCheckBoxValue("eDraw") && readyDraw ? E.IsReady() : E.IsLearned)
+            //{
+            //    Circle.Draw(EColorSlide.GetSharpColor(), E.Range, 1f, Player.Instance);
+            //}
 
-            if (DrawingsMenu.GetCheckBoxValue("rDraw") && readyDraw ? R.IsReady() : R.IsLearned)
-            {
-                Circle.Draw(RColorSlide.GetSharpColor(), R.Range, 1f, Player.Instance);
-            }
+            //if (DrawingsMenu.GetCheckBoxValue("rDraw") && readyDraw ? R.IsReady() : R.IsLearned)
+            //{
+            //    Circle.Draw(RColorSlide.GetSharpColor(), R.Range, 1f, Player.Instance);
+            //}
 
         }
 
