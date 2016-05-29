@@ -35,13 +35,9 @@ namespace Eclipse.Modes
             var useEE = ComboMenu.GetCheckBoxValue("UseEEC");
             var tqq = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
 
-            if(_player.HasBuff("RengarR"))
-            {
-                Program.ItemsYuno();
-            }
-
             if (useR)
             {
+                Program.ItemsYuno();
                 R.Cast();
             }
 
@@ -52,10 +48,11 @@ namespace Eclipse.Modes
             if (tqqq.IsValidTarget(Q.Range) && Q.IsReady() && useQ)
             {
                 Q.Cast();
+                Program.Items();
             }
 
             var tww = TargetSelector.GetTarget(W.Range, DamageType.Magical);
-            if (tww.IsValidTarget(W.Range) && W.IsReady() && !_player.HasBuff("rengarpassivebuff") && useW)
+            if (tww.IsValidTarget(250) && W.IsReady() && !_player.HasBuff("rengarpassivebuff") && useW)
             {
                 W.Cast();
             }
@@ -67,7 +64,7 @@ namespace Eclipse.Modes
             {
                 E.Cast(tee);
             }
-                Program.Items();
+                
             }
 
             if (_player.Mana <= 5)
@@ -80,7 +77,7 @@ namespace Eclipse.Modes
                 if (useW && FirstMenu.GetComboBoxValue("ComboPrio") == 1)
                 {
                     var tw = TargetSelector.GetTarget(W.Range, DamageType.Magical);
-                    if (tw.IsValidTarget(W.Range) && W.IsReady() && !_player.HasBuff("rengarpassivebuff")) W.Cast();
+                    if (tw.IsValidTarget(250) && W.IsReady() && !_player.HasBuff("rengarpassivebuff")) W.Cast();
                 }
 
                 if (useE && FirstMenu.GetComboBoxValue("ComboPrio") == 2)
