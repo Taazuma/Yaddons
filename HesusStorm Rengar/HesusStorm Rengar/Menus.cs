@@ -88,7 +88,7 @@ namespace Eclipse
             JungleClearMenu.CreateCheckBox("Use W", "wUse");
             JungleClearMenu.CreateCheckBox("Use E", "eUse");
             JungleClearMenu.AddGroupLabel("Settings");
-            JungleClearMenu.Add("JungleSave", new CheckBox("Save Ferocity"));
+            JungleClearMenu.Add("JungleSave", new CheckBox("Save"));
             JungleClearMenu.Add("JunglePrio", new ComboBox("Empowered Priority", 0, "Q", "W", "E"));
 
             KillStealMenu.AddGroupLabel("KillSteal Beta");
