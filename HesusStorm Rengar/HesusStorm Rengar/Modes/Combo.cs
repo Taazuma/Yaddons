@@ -97,7 +97,6 @@ namespace Eclipse.Modes
                         if (te.IsValidTarget(E.Range) && E.IsReady() && E.GetPrediction(te).HitChance >= Hitch.hitchance(E, FirstMenu)) E.Cast(te);
                     }
                 }
-                Program.Items();
             }
 
             if (MiscMenu.GetCheckBoxValue("AutoW"))
