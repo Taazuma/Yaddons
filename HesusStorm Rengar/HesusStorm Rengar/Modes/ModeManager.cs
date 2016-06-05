@@ -28,12 +28,15 @@ namespace Eclipse.Modes
 
             Active.Execute();
 
-
+            if (orbMode.HasFlag(Orbwalker.ActiveModes.Harass))
+            {
+                Harass.Execute();
+            }
 
             if (orbMode.HasFlag(Orbwalker.ActiveModes.Combo))
             {
                 Combo.Execute();
-                Program.AutoHeal();
+                //Program.AutoHeal();
             }
 
             if (orbMode.HasFlag(Orbwalker.ActiveModes.LastHit))
@@ -55,6 +58,8 @@ namespace Eclipse.Modes
             {
                 JungleClear.Execute();
             }
+
+            Program.ChangeComboMode();
 
         }
     }

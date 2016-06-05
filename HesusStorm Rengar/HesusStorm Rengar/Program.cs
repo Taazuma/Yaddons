@@ -15,6 +15,7 @@ using SharpDX;
 using static Eclipse.SpellsManager;
 using static Eclipse.Menus;
 using Eclipse.Modes;
+using EloBuddy.SDK.Menu;
 
 namespace Eclipse
 {
@@ -24,6 +25,7 @@ namespace Eclipse
         {
             get { return ObjectManager.Player; }
         }
+        private static int _lastTick;
         private static void Main(string[] args)
         {
             Loading.OnLoadingComplete += Loading_OnLoadingComplete;
@@ -87,7 +89,7 @@ namespace Eclipse
 
             if (_player.Mana == 5)
             {
-                if (combo && QC && Q.IsReady() &&  mode && args.Target.IsValidTarget(Q.Range))
+                if (combo && QC && Q.IsReady() && mode && args.Target.IsValidTarget(Q.Range))
                 {
                     Q.Cast();
                 }
@@ -99,6 +101,52 @@ namespace Eclipse
                 }
             }
 
+        }
+
+        public static bool getCheckBoxItem(Menu m, string item)
+        {
+            return m[item].Cast<CheckBox>().CurrentValue;
+        }
+
+        public static int getSliderItem(Menu m, string item)
+        {
+            return m[item].Cast<Slider>().CurrentValue;
+        }
+
+        public static bool getKeyBindItem(Menu m, string item)
+        {
+            return m[item].Cast<KeyBind>().CurrentValue;
+        }
+
+        public static int getBoxItem(Menu m, string item)
+        {
+            return m[item].Cast<ComboBox>().CurrentValue;
+        }
+
+        public static void ChangeComboMode()
+        {
+            var changetime = Environment.TickCount - _lastTick;
+
+
+            if (getKeyBindItem(FirstMenu, "Switch"))
+            {
+                if (getBoxItem(FirstMenu, "ComboPrio") == 0 && _lastTick + 400 < Environment.TickCount)
+                {
+                    _lastTick = Environment.TickCount;
+                    FirstMenu["ComboPrio"].Cast<ComboBox>().CurrentValue = 1;
+                }
+
+                if (getBoxItem(FirstMenu, "ComboPrio") == 1 && _lastTick + 400 < Environment.TickCount)
+                {
+                    _lastTick = Environment.TickCount;
+                    FirstMenu["ComboPrio"].Cast<ComboBox>().CurrentValue = 2;
+                }
+                if (getBoxItem(FirstMenu, "ComboPrio") == 2 && _lastTick + 400 < Environment.TickCount)
+                {
+                    _lastTick = Environment.TickCount;
+                    FirstMenu["ComboPrio"].Cast<ComboBox>().CurrentValue = 0;
+                }
+            }
         }
 
         private static void OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
@@ -134,7 +182,7 @@ namespace Eclipse
         {
             var health = MiscMenu.GetSliderValue("AutoWHP");
 
-            if (_player.HasBuff("Recall") || _player.Mana <= 4) return;
+            if (_player.HasBuff("Recall") || _player.Mana <= 5) return;
 
             if (W.IsReady() && _player.HealthPercent <= health)
             {

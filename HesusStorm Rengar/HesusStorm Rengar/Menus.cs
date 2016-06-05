@@ -41,6 +41,7 @@ namespace Eclipse
             FirstMenu = MainMenu.AddMenu("HesusStorm "+Player.Instance.ChampionName, Player.Instance.ChampionName.ToLower() + "taazuma");
             FirstMenu.AddLabel("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             FirstMenu.Add("ComboPrio", new ComboBox("Combo Priority", 0, "Q", "W", "E"));
+            FirstMenu.Add("Switch", new KeyBind("Switch Priority", false, KeyBind.BindTypes.HoldActive, 'L'));
             FirstMenu.Add(E.Slot + "hit", new ComboBox("E HitChance", 0, "High", "Medium", "Low"));
             FirstMenu.AddLabel("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             FirstMenu.AddSeparator(10);
@@ -48,7 +49,7 @@ namespace Eclipse
             FirstMenu.AddLabel("If you found any bugs report it on my Thread");
             FirstMenu.AddLabel("Have fun with Playing");
             ComboMenu = FirstMenu.AddSubMenu("Combo", ComboMenuID);
-            //HarassMenu = FirstMenu.AddSubMenu("Harass", HarassMenuID);
+            HarassMenu = FirstMenu.AddSubMenu("Harass", HarassMenuID);
             //AutoHarassMenu = FirstMenu.AddSubMenu("AutoHarass", AutoHarassMenuID);
             LaneClearMenu = FirstMenu.AddSubMenu("LaneClear", LaneClearMenuID);
             LasthitMenu = FirstMenu.AddSubMenu("LastHit", LastHitMenuID);
@@ -63,12 +64,12 @@ namespace Eclipse
             ComboMenu.CreateCheckBox("Use E", "eUse");
             ComboMenu.CreateCheckBox("Use R", "rUse", false);
             ComboMenu.Add("UseEEC", new CheckBox("Use Empower E"));
+            ComboMenu.AddLabel("Turn Use R off for better Play performence like a pro kappa");
 
-            //HarassMenu.AddGroupLabel("Harass");
-            //HarassMenu.CreateCheckBox("Use Q", "qUse");
-            //HarassMenu.CreateCheckBox("Use W", "wUse");
-            //HarassMenu.CreateCheckBox("Use E", "eUse");
-            //HarassMenu.AddGroupLabel("Settings");
+            HarassMenu.AddGroupLabel("Harass");
+            HarassMenu.CreateCheckBox("Use Q", "qUse", false);
+            HarassMenu.CreateCheckBox("Use W", "wUse");
+            HarassMenu.CreateCheckBox("Use E", "eUse");
 
             LaneClearMenu.AddGroupLabel("LaneClear");
             LaneClearMenu.CreateCheckBox("Use Q", "qUse");
@@ -88,18 +89,19 @@ namespace Eclipse
             JungleClearMenu.CreateCheckBox("Use W", "wUse");
             JungleClearMenu.CreateCheckBox("Use E", "eUse");
             JungleClearMenu.AddGroupLabel("Settings");
-            JungleClearMenu.Add("JungleSave", new CheckBox("Save"));
+            JungleClearMenu.Add("JungleSave", new CheckBox("Save Using"));
             JungleClearMenu.Add("JunglePrio", new ComboBox("Empowered Priority", 0, "Q", "W", "E"));
 
             KillStealMenu.AddGroupLabel("KillSteal Beta");
             KillStealMenu.CreateCheckBox("Use Q pref off", "qUse", false);
-            KillStealMenu.CreateCheckBox("Use W", "wUse");
-            KillStealMenu.CreateCheckBox("Use E", "eUse");
+            KillStealMenu.CreateCheckBox("Use W", "wUse", false);
+            KillStealMenu.CreateCheckBox("Use E", "eUse", false);
+            KillStealMenu.AddLabel("Can be make Problems with the Combo Priority");
             //KillStealMenu.AddGroupLabel("Settings");
 
             MiscMenu.AddGroupLabel("Settings");
             MiscMenu.AddLabel("Healer");
-            MiscMenu.Add("AutoW", new CheckBox("Use W to Heal"));
+            MiscMenu.CreateCheckBox("Use W to Heal", ("AutoW"), false);
             MiscMenu.Add("AutoWHP", new Slider("If Health % <", 35, 1, 100));
             MiscMenu.AddLabel("Misc...");
             MiscMenu.Add("UseEInt", new CheckBox("E to Interrupt"));

@@ -85,6 +85,7 @@
     <Compile Include="Modes\Active.cs" />
     <Compile Include="Modes\Combo.cs" />
     <Compile Include="Modes\Flee.cs" />
+    <Compile Include="Modes\Harass.cs" />
     <Compile Include="Modes\JungleClear.cs" />
     <Compile Include="Modes\LaneClear.cs" />
     <Compile Include="Modes\LastHit.cs" />
