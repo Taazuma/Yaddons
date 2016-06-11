@@ -50,26 +50,27 @@ namespace Eclipse
             ComboMenu.AddGroupLabel("Combo");
             ComboMenu.CreateCheckBox("Use Q", "qUse");
             ComboMenu.Add("q2Use", new CheckBox("Use Q when enemy is in AA Range", false));
-            ComboMenu.AddSeparator();
+            ComboMenu.AddLabel("----------------");
             ComboMenu.CreateCheckBox("Use W", "wUse");
-            ComboMenu.AddSeparator();
+            ComboMenu.AddLabel("----------------");
             ComboMenu.CreateCheckBox("Use E", "eUse");
             ComboMenu.Add("e2Use", new CheckBox("Use second E"));
-            ComboMenu.AddLabel("seoncd E off = manual");
-            ComboMenu.AddSeparator();
+            ComboMenu.AddLabel("second E off = manual");
+            ComboMenu.AddLabel("----------------");
             ComboMenu.CreateCheckBox("Use R", "rUse");
 
             HarassMenu.AddGroupLabel("Harass");
             HarassMenu.CreateCheckBox("Use E", "eUse");
+            HarassMenu.Add("e2Use", new CheckBox("Use second E"));
+            HarassMenu.AddLabel("second E off = manual");
             HarassMenu.AddGroupLabel("Settings");
-            HarassMenu.CreateSlider("Mana must be higher than [{0}%] to use Harass spells", "manaSlider", 30);
+            HarassMenu.CreateSlider("Mana must be higher than [{0}%] to use Harass spells", "manaSlider", 50);
 
             LaneClearMenu.AddGroupLabel("LaneClear");
             LaneClearMenu.CreateCheckBox("Use Q", "qUse", false);
             LaneClearMenu.CreateCheckBox("Use W", "wUse");
-            LaneClearMenu.CreateCheckBox("Use E", "eUse", false);
             LaneClearMenu.AddGroupLabel("Settings");
-            LaneClearMenu.CreateSlider("Mana must be higher than [{0}%] to use Harass spells", "manaSlider", 30);
+            LaneClearMenu.CreateSlider("Mana must be higher than [{0}%] to use Harass spells", "manaSlider", 50);
 
             //LasthitMenu.AddGroupLabel("Lasthit");
             //LasthitMenu.CreateCheckBox("Use Q", "qUse");
@@ -82,13 +83,15 @@ namespace Eclipse
             JungleClearMenu.CreateCheckBox("Use W", "wUse");
             JungleClearMenu.CreateCheckBox("Use E", "eUse");
             JungleClearMenu.AddGroupLabel("Settings");
-            JungleClearMenu.CreateSlider("Mana must be higher than [{0}%] to use Harass spells", "manaSlider", 30);
+            JungleClearMenu.CreateSlider("Mana must be higher than [{0}%] to use Harass spells", "manaSlider", 20);
 
             KillStealMenu.AddGroupLabel("KillSteal");
             KillStealMenu.CreateCheckBox("Use Q", "qUse");
 
             MiscMenu.AddGroupLabel("Settings");
             MiscMenu.AddLabel("Smite");
+            MiscMenu.CreateCheckBox("Use Smite to KS", "sks");
+            MiscMenu.CreateCheckBox("Use Smite in JGL", "sjgl");
             if (Game.MapId == GameMapId.TwistedTreeline && SpellsManager.Smite.IsLearned)
             {
                 MiscMenu.AddGroupLabel("Mobs");

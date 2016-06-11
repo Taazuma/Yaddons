@@ -31,7 +31,6 @@ namespace Eclipse
                 Circle.Draw(QColorSlide.GetSharpColor(), Q.Range, 1f, Player.Instance);
             }
 
-
         }
 
         /// <summary>

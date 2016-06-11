@@ -24,11 +24,18 @@ namespace Eclipse.Modes
         public static void Execute()
         {
             Minion = (Obj_AI_Minion)EntityManager.MinionsAndMonsters.Monsters.FirstOrDefault(buff => Program._player.IsInRange(buff, 570) && (buff.Name.StartsWith(buff.BaseSkinName) || Program.BuffsThatActuallyMakeSenseToSmite.Contains(buff.BaseSkinName)) && !buff.Name.Contains("Mini") && !buff.Name.Contains("Spawn"));
-            if (Minion.IsValidTarget(570))
+            AIHeroClient target = TargetSelector.GetTarget(570, DamageType.Magical);
+
+            if (Minion.IsValidTarget(570) && Minion.Health < Program.SmiteDmgMonster(Minion) && MiscMenu.GetCheckBoxValue("sjgl"))
             {
                 Smite.Cast(Minion);
-                Debug.WriteChat("Casting Smite on {0}, who has {1}HP", Minion.Name, string.Format("{0}", (int)Minion.Health));
             }
+
+            if (target.IsValidTarget(570) && target.Health < Program.SmiteDmgMonster(Minion) && MiscMenu.GetCheckBoxValue("sks"))
+            {
+                Smite.Cast(target);
+            }
+
         }
     }
 }

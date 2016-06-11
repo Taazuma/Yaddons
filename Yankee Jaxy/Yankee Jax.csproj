@@ -84,7 +84,6 @@
     <Compile Include="Modes\Active.cs" />
     <Compile Include="Modes\AutoHarass.cs" />
     <Compile Include="Modes\Combo.cs" />
-    <Compile Include="Modes\Debug.cs" />
     <Compile Include="Modes\Flee.cs" />
     <Compile Include="Modes\Harass.cs" />
     <Compile Include="Modes\JungleClear.cs" />

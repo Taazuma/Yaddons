@@ -35,10 +35,6 @@ namespace Eclipse.Modes
             {
                 W.Cast();
             }
-            if (LaneClearMenu.GetCheckBoxValue("eUse") && E.IsReady())
-            {
-                E.Cast();
-            }
 
         }
     }
