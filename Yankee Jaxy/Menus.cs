@@ -100,14 +100,11 @@ namespace Eclipse
                 MiscMenu.Add("TT_NWolf", new CheckBox("Wolf Enabled"));
                 MiscMenu.Add("TT_NWraith", new CheckBox("Wraith Enabled"));
             }
+
             if (Game.MapId == GameMapId.SummonersRift && SpellsManager.Smite.IsLearned)
             {
                 MiscMenu.AddGroupLabel("Big Mobs");
-                MiscMenu.Add("SRU_Dragon_Air", new CheckBox("Air Dragon"));
-                MiscMenu.Add("SRU_Dragon_Earth", new CheckBox("Earth Dragon"));
-                MiscMenu.Add("SRU_Dragon_Fire", new CheckBox("Fire Dragon"));
-                MiscMenu.Add("SRU_Dragon_Water", new CheckBox("Water Dragon"));
-                MiscMenu.Add("SRU_Dragon_Elder", new CheckBox("Elder Dragon"));
+                MiscMenu.Add("AllDragons", new CheckBox("All Dragons"));
                 MiscMenu.Add("SRU_Baron", new CheckBox("Baron"));
                 MiscMenu.Add("SRU_Red", new CheckBox("Red buff"));
                 MiscMenu.Add("SRU_Blue", new CheckBox("Blue buff"));
