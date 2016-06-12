@@ -36,7 +36,10 @@ namespace Eclipse
 
         public static void CreateMenu()
         {
-            FirstMenu = MainMenu.AddMenu("Taazuma "+Player.Instance.ChampionName, Player.Instance.ChampionName.ToLower() + "taazuma");
+            FirstMenu = MainMenu.AddMenu("Yankee "+Player.Instance.ChampionName, Player.Instance.ChampionName.ToLower() + "taazuma");
+            FirstMenu.AddGroupLabel("Addon by Taazuma / Thanks for using it");
+            FirstMenu.AddLabel("If you found any bugs report it on my Thread");
+            FirstMenu.AddLabel("Have fun with Playing");
             ComboMenu = FirstMenu.AddSubMenu("Combo", ComboMenuID);
             HarassMenu = FirstMenu.AddSubMenu("Harass", HarassMenuID);
             //AutoHarassMenu = FirstMenu.AddSubMenu("AutoHarass", AutoHarassMenuID);
@@ -88,34 +91,14 @@ namespace Eclipse
             KillStealMenu.AddGroupLabel("KillSteal");
             KillStealMenu.CreateCheckBox("Use Q", "qUse");
 
-            MiscMenu.AddGroupLabel("Settings");
-            MiscMenu.AddLabel("Smite");
+
+            MiscMenu.AddGroupLabel("Spell Settings");
+            if (SpellsManager.Smite.IsLearned)
+            {
+            MiscMenu.AddLabel("Smite Spell");
             MiscMenu.CreateCheckBox("Use Smite to KS", "sks");
             MiscMenu.CreateCheckBox("Use Smite in JGL", "sjgl");
-            if (Game.MapId == GameMapId.TwistedTreeline && SpellsManager.Smite.IsLearned)
-            {
-                MiscMenu.AddGroupLabel("Mobs");
-                MiscMenu.Add("TT_Spiderboss", new CheckBox("Vilemaw Enabled"));
-                MiscMenu.Add("TT_NGolem", new CheckBox("Golem Enabled"));
-                MiscMenu.Add("TT_NWolf", new CheckBox("Wolf Enabled"));
-                MiscMenu.Add("TT_NWraith", new CheckBox("Wraith Enabled"));
-            }
-
-            if (Game.MapId == GameMapId.SummonersRift && SpellsManager.Smite.IsLearned)
-            {
-                MiscMenu.AddGroupLabel("Big Mobs");
-                MiscMenu.Add("AllDragons", new CheckBox("All Dragons"));
-                MiscMenu.Add("SRU_Baron", new CheckBox("Baron"));
-                MiscMenu.Add("SRU_Red", new CheckBox("Red buff"));
-                MiscMenu.Add("SRU_Blue", new CheckBox("Blue buff"));
-                MiscMenu.Add("SRU_RiftHerald", new CheckBox("Rift Herald"));
-                MiscMenu.AddSeparator();
-                MiscMenu.AddGroupLabel("Small Mobs");
-                MiscMenu.Add("SRU_Gromp", new CheckBox("Gromp", false));
-                MiscMenu.Add("SRU_Murkwolf", new CheckBox("Wolves", false));
-                MiscMenu.Add("SRU_Krug", new CheckBox("Krug", false));
-                MiscMenu.Add("SRU_Razorbeak", new CheckBox("Chicken camp", false));
-                MiscMenu.Add("Sru_Crab", new CheckBox("Crab", false));
+            MiscMenu.Add("smitekey", new KeyBind("Smite Activated", false, KeyBind.BindTypes.PressToggle, 'M'));
             }
 
             DrawingsMenu.AddGroupLabel("Settings");
@@ -124,9 +107,17 @@ namespace Eclipse
             DrawingsMenu.CreateCheckBox("Draw damage indicator percent.", "perDraw");
             DrawingsMenu.CreateCheckBox("Draw damage indicator statistics.", "statDraw", false);
             DrawingsMenu.AddGroupLabel("Spells");
-            DrawingsMenu.CreateCheckBox("Draw Q", "qDraw");
+            DrawingsMenu.CreateCheckBox("Draw Smite Status", "smitedrawer");
+            DrawingsMenu.AddLabel("----------------");
+            DrawingsMenu.CreateCheckBox("Draw Q.", "qDraw");
+            DrawingsMenu.CreateCheckBox("Draw W.", "wDraw");
+            DrawingsMenu.CreateCheckBox("Draw E.", "eDraw");
+            DrawingsMenu.CreateCheckBox("Draw R.", "rDraw");
             DrawingsMenu.AddGroupLabel("Drawings Color");
             QColorSlide = new ColorSlide(DrawingsMenu, "qColor", Color.Red, "Q Color:");
+            WColorSlide = new ColorSlide(DrawingsMenu, "wColor", Color.Purple, "W Color:");
+            EColorSlide = new ColorSlide(DrawingsMenu, "eColor", Color.Orange, "E Color:");
+            RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
             DamageIndicatorColorSlide = new ColorSlide(DrawingsMenu, "healthColor", Color.YellowGreen, "DamageIndicator Color:");
 
         }

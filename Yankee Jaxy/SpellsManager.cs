@@ -21,7 +21,6 @@ namespace Eclipse
         public static Spell.Active W;
         public static Spell.Active E;
         public static Spell.Active R;
-        public static SpellSlot IgniteSlot = SpellSlot.Unknown;
         public static Spell.Targeted Smite { get; private set; }
 
 
@@ -29,7 +28,7 @@ namespace Eclipse
         {
             var smite = Player.Spells.FirstOrDefault(s => s.SData.Name.ToLower().Contains("smite"));
             if (smite != null)
-                Smite = new Spell.Targeted(smite.Slot, 570);
+            Smite = new Spell.Targeted(smite.Slot, 570);
             Q = new Spell.Targeted(SpellSlot.Q, 700);
             W = new Spell.Active(SpellSlot.W);
             E = new Spell.Active(SpellSlot.E, 187);

@@ -76,63 +76,13 @@ namespace Eclipse
         }
 
 
-              public static readonly string[] BuffsThatActuallyMakeSenseToSmite =
-             {
+        public static readonly string[] BuffsThatActuallyMakeSenseToSmite =
+       {
                 "SRU_Red", "SRU_Blue", "SRU_Dragon_Water",  "SRU_Dragon_Fire", "SRU_Dragon_Earth", "SRU_Dragon_Air", "SRU_Dragon_Elder",
                 "SRU_Baron", "SRU_Gromp", "SRU_Murkwolf",
                 "SRU_Razorbeak", "SRU_RiftHerald",
                 "SRU_Krug", "Sru_Crab", "TT_Spiderboss",
                 "TT_NGolem", "TT_NWolf", "TT_NWraith"
-            };
-
-        public static readonly string[] DragonSmite =
-            {
-                "SRU_Red", "SRU_Blue", "SRU_Dragon_Water",  "SRU_Dragon_Fire", "SRU_Dragon_Earth", "SRU_Dragon_Air", "SRU_Dragon_Elder"
-            };
-
-        public static readonly string[] BaronSmite =
-          {
-                "SRU_Baron"
-            };
-
-        public static readonly string[] BlueSmite =
-            {
-                "SRU_Blue"
-            };
-
-        public static readonly string[] RedSmite =
-             {
-                "SRU_Red"
-            };
-
-        public static readonly string[] HeraldSmite =
-            {
-                "SRU_RiftHerald"
-            };
-
-        public static readonly string[] FroschS =
-          {
-                "SRU_Gromp"
-            };
-
-        public static readonly string[] WolfS =
-          {
-                "SRU_Murkwolf"
-            };
-
-        public static readonly string[] SteinS =
-             {
-                "SRU_Krug"
-            };
-
-        public static readonly string[] ChicksS =
-             {
-                "SRU_Razorbeak"
-            };
-
-        public static readonly string[] KrabbeS =
-          {
-                "Sru_Crab"
             };
 
         private static void OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)

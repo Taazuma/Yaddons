@@ -10,3 +10,4 @@ D:\Tommi\Documents\Visual Studio 2015\Projects\Yankee Jaxy\Yankee Jaxy\bin\Relea
 D:\Tommi\Documents\Visual Studio 2015\Projects\Yankee Jaxy\Yankee Jaxy\bin\Release\SharpDX.XInput.dll
 D:\Tommi\Documents\Visual Studio 2015\Projects\Yankee Jaxy\Yankee Jaxy\obj\Release\Eclipse Template.exe
 D:\Tommi\Documents\Visual Studio 2015\Projects\Yankee Jaxy\Yankee Jaxy\obj\Release\Eclipse Template.pdb
+D:\Tommi\Documents\Visual Studio 2015\Projects\Yankee Jaxy\Yankee Jaxy\obj\Release\Yankee Jax.csprojResolveAssemblyReference.cache
