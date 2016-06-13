@@ -31,7 +31,7 @@ namespace Eclipse.Modes
                 Q.Cast(qtarget);
             }
 
-            if (LaneClearMenu.GetCheckBoxValue("wUse") && W.IsReady())
+            if (LaneClearMenu.GetCheckBoxValue("wUse") && W.IsReady() && wtarget.IsValidTarget(100))
             {
                 W.Cast();
             }

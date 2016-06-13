@@ -27,7 +27,7 @@ namespace Eclipse.Modes
                 Q.Cast(target);
             }
 
-            if (JungleClearMenu.GetCheckBoxValue("wUse") && W.IsReady())
+            if (JungleClearMenu.GetCheckBoxValue("wUse") && W.IsReady() && target.IsValidTarget(150))
             {
                 W.Cast();
             }
