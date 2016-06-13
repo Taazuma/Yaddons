@@ -19,6 +19,9 @@ namespace Eclipse
             DamageIndicator.Init();
         }
         public static Obj_AI_Minion Minion;
+        public static Text Text1 = new EloBuddy.SDK.Rendering.Text("", new System.Drawing.Font(System.Drawing.FontFamily.GenericSansSerif, 20, System.Drawing.FontStyle.Bold));
+        private static Text Text = new EloBuddy.SDK.Rendering.Text("", new System.Drawing.Font(System.Drawing.FontFamily.GenericSansSerif, 15, System.Drawing.FontStyle.Bold));
+        private static Text Text0 = new EloBuddy.SDK.Rendering.Text("", new System.Drawing.Font(System.Drawing.FontFamily.GenericSansSerif, 9, System.Drawing.FontStyle.Bold));
         /// <summary>
         /// Normal Drawings will not ovewrite any of LOL Sprites
         /// </summary>
@@ -46,22 +49,23 @@ namespace Eclipse
             {
                 Circle.Draw(RColorSlide.GetSharpColor(), R.Range, 1f, Player.Instance);
             }
-
-            if (Smite.IsLearned)
-            {
                 Minion = (Obj_AI_Minion)EntityManager.MinionsAndMonsters.Monsters.FirstOrDefault(buff => Program._player.IsInRange(buff, 570) && (buff.Name.StartsWith(buff.BaseSkinName) || Program.BuffsThatActuallyMakeSenseToSmite.Contains(buff.BaseSkinName)) && !buff.Name.Contains("Mini") && !buff.Name.Contains("Spawn"));
                 AIHeroClient target = TargetSelector.GetTarget(570, DamageType.Magical);
                 var playerPos = Drawing.WorldToScreen(Program._player.Position);
                 var enemyPos = Drawing.WorldToScreen(target.Position);
                 var MonsterPos = Drawing.WorldToScreen(Minion.Position);
-                var smitedraw = DrawingsMenu.GetCheckBoxValue("smitedrawer");
+                var smitedraw = DrawingsMenu.GetCheckBoxValue("smitedraw");
 
-                if (Smite.IsReady() && smitedraw)
+                if (Smite.IsReady() && DrawingsMenu.GetCheckBoxValue("smitedraw"))
                 {
-                    Drawing.DrawText(playerPos.X - 70, playerPos.Y + 40, Color.GhostWhite, "Smite active");
+                    //Drawing.DrawText(playerPos.X - 70, playerPos.Y + 40, Color.GhostWhite, "Smite active");
+                    Text0.Position = Drawing.WorldToScreen(Player.Instance.Position) - new Vector2(100, -40);
+                    Text0.Color = Color.AliceBlue;
+                    Text0.TextValue = "Smite active";
+                    Text0.Draw();
                 }
 
-                if (Smite.IsOnCooldown && smitedraw)
+                if (Smite.IsOnCooldown && DrawingsMenu.GetCheckBoxValue("smitedraw"))
                 {
                     Drawing.DrawText(playerPos.X - 70, playerPos.Y + 40, Color.Red, "Smite cooldown");
                 }
@@ -75,8 +79,7 @@ namespace Eclipse
                 {
                     Drawing.DrawText(MonsterPos.X - 70, MonsterPos.Y + 40, Color.IndianRed, "Smite killable");
                 }
-            }
-
+            
             }
 
         /// <summary>

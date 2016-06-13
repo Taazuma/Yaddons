@@ -107,7 +107,7 @@ namespace Eclipse
             DrawingsMenu.CreateCheckBox("Draw damage indicator percent.", "perDraw");
             DrawingsMenu.CreateCheckBox("Draw damage indicator statistics.", "statDraw", false);
             DrawingsMenu.AddGroupLabel("Spells");
-            DrawingsMenu.CreateCheckBox("Draw Smite Status", "smitedrawer");
+            DrawingsMenu.CreateCheckBox("Draw Smite Status", "smitedraw");
             DrawingsMenu.AddLabel("----------------");
             DrawingsMenu.CreateCheckBox("Draw Q.", "qDraw");
             DrawingsMenu.CreateCheckBox("Draw W.", "wDraw");
