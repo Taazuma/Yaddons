@@ -30,7 +30,9 @@ namespace Eclipse
             get { return ObjectManager.Player; }
 
         }
+
         public const float SmiteRange = 570;
+
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
             //Put the name of the champion here
@@ -137,6 +139,61 @@ namespace Eclipse
                 }
             };
         }
+
+        //public static void WardJump()
+        //{
+        //    EloBuddy.Player.IssueOrder(GameObjectOrder.MoveTo, Game.CursorPos);
+        //    if (!Q.IsReady())
+        //    {
+        //        return;
+        //    }
+        //    Vector3 wardJumpPosition = (_player.Position.Distance(Game.CursorPos) < 600) ? Game.CursorPos : _player.Position.Distance(Game.CursorPos, 600);
+        //    var lstGameObjects = ObjectManager.Get<Obj_AI_Base>().ToArray();
+        //    Obj_AI_Base entityToWardJump = lstGameObjects.FirstOrDefault(obj =>
+        //        obj.Position.Distance(wardJumpPosition) < 150
+        //        && (obj is Obj_AI_Minion || obj is AIHeroClient)
+        //        && !obj.IsMe && !obj.IsDead
+        //        && obj.Position.Distance(_player.Position) < Q.Range);
+
+        //    if (entityToWardJump != null)
+        //    {
+        //        Q.Cast(entityToWardJump);
+        //    }
+        //    else
+        //    {
+        //        int wardId = GetWardItem();
+
+
+        //        if (wardId != -1 && !wardJumpPosition.IsWall())
+        //        {
+        //            PutWard(wardJumpPosition.To2D(), (ItemId)wardId);
+        //            lstGameObjects = ObjectManager.Get<Obj_AI_Base>().ToArray();
+        //            Q.Cast(
+        //                lstGameObjects.FirstOrDefault(obj =>
+        //                obj.Position.Distance(wardJumpPosition) < 150 &&
+        //                obj is Obj_AI_Minion && obj.Position.Distance(_player.Position) < Q.Range));
+        //        }
+        //    }
+        //}
+
+
+        //public static int GetWardItem()
+        //{
+        //    int[] wardItems = { 3340, 3350, 3205, 3207, 2049, 2045, 2044, 3361, 3154, 3362, 3160, 2043 };
+        //    foreach (var id in wardItems.Where(id => Items.HasItem(id) && Items.CanUseItem(id)))
+        //        return id;
+        //    return -1;
+        //}
+
+        //public static void PutWard(Vector2 pos, ItemId warditem)
+        //{
+
+        //    foreach (var slot in _player.InventoryItems.Where(slot => slot.Id == warditem))
+        //    {
+        //        ObjectManager.Player.Spellbook.CastSpell(slot.SpellSlot, pos.To3D());
+        //        return;
+        //    }
+        //}
 
 
     }

@@ -20,6 +20,7 @@ namespace Eclipse.Modes
     internal class Combo
     {
         private static bool IsEUsed => Player.HasBuff("JaxCounterStrike");
+        private static bool IsWUsed => Player.HasBuff("JaxEmpowerTwo");
 
         public static void Execute()
         {
