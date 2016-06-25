@@ -126,17 +126,17 @@ namespace Eclipse
             DrawingsMenu.CreateCheckBox("Draw damage indicator statistics.", "statDraw", false);
             DrawingsMenu.AddGroupLabel("Spells");
             DrawingsMenu.CreateCheckBox("Draw Q.", "qDraw");
-            DrawingsMenu.CreateCheckBox("Draw W.", "wDraw");
-            DrawingsMenu.CreateCheckBox("Draw E.", "eDraw");
-            DrawingsMenu.CreateCheckBox("Draw R.", "rDraw");
-            DrawingsMenu.CreateCheckBox("Draw Smite.", "sDraw");
-            DrawingsMenu.CreateCheckBox("Draw Smite Range.", "srDraw");
+            //DrawingsMenu.CreateCheckBox("Draw W.", "wDraw");
+            //DrawingsMenu.CreateCheckBox("Draw E.", "eDraw");
+            //DrawingsMenu.CreateCheckBox("Draw R.", "rDraw");
+            //DrawingsMenu.CreateCheckBox("Draw Smite.", "sDraw");
+            //DrawingsMenu.CreateCheckBox("Draw Smite Range.", "srDraw");
             DrawingsMenu.AddGroupLabel("Drawings Color");
             QColorSlide = new ColorSlide(DrawingsMenu, "qColor", Color.Red, "Q Color:");
-            WColorSlide = new ColorSlide(DrawingsMenu, "wColor", Color.Purple, "W Color:");
-            EColorSlide = new ColorSlide(DrawingsMenu, "eColor", Color.Orange, "E Color:");
-            RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
-            RColorSlide = new ColorSlide(DrawingsMenu, "sColor", Color.BlanchedAlmond, "Smite Color:");
+            //WColorSlide = new ColorSlide(DrawingsMenu, "wColor", Color.Purple, "W Color:");
+            //EColorSlide = new ColorSlide(DrawingsMenu, "eColor", Color.Orange, "E Color:");
+            //RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
+            //RColorSlide = new ColorSlide(DrawingsMenu, "sColor", Color.BlanchedAlmond, "Smite Color:");
             DamageIndicatorColorSlide = new ColorSlide(DrawingsMenu, "healthColor", Color.YellowGreen, "DamageIndicator Color:");
 
         }
