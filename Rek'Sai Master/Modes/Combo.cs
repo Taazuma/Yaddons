@@ -90,6 +90,11 @@ namespace Eclipse.Modes
                         var lastTarget = Orbwalker.LastTarget;
                         var target = TargetSelector.GetTarget(300, DamageType.Physical);
 
+                if (ComboMenu.GetCheckBoxValue("UseQCombo") && Program._player.IsInAutoAttackRange(target))
+                {
+                    Q.Cast();
+                }
+
                         if (ComboMenu.GetCheckBoxValue("UseECombo") && E.IsReady())
                         {
 
