@@ -34,12 +34,12 @@ namespace Eclipse.Modes
                     var predE2 = E2.GetPrediction(targetE2);
                     var predq2 = Q2.GetPrediction(targetQ2).HitChance >= Hitch.hitchance(Q2, FirstMenu);
 
-                if (Program.getCheckBoxItem(ComboMenu, "UseQBCombo"))
-                {
-                    var tbq = TargetSelector.GetTarget(Q2.Range, DamageType.Magical);
-                    var predqq = Q2.GetPrediction(tbq).HitChance >= Hitch.hitchance(Q2, FirstMenu);
-                    if (Q2.IsReady() && predqq && t.IsValidTarget(Q2.Range)) Q2.Cast(tbq);
-                }
+                //if (Program.getCheckBoxItem(ComboMenu, "UseQBCombo"))
+                //{
+                //    var tbq = TargetSelector.GetTarget(Q2.Range, DamageType.Magical);
+                //    var predqq = Q2.GetPrediction(tbq).HitChance >= Hitch.hitchance(Q2, FirstMenu);
+                //    if (Q2.IsReady() && predqq && t.IsValidTarget(Q2.Range)) Q2.Cast(tbq);
+                //}
 
                 if (ComboMenu.GetCheckBoxValue("UseQBCombo") && Q2.IsReady() && predq2)
                 {
@@ -58,30 +58,30 @@ namespace Eclipse.Modes
                     }
 
 
-                var predq = Q2.GetPrediction(targetQ2).HitChance >= Hitch.hitchance(Q2, FirstMenu);
-                if (ComboMenu.GetCheckBoxValue("UseQBCombo") && Q2.IsReady() && predq)
-                    {
+                //var predq = Q2.GetPrediction(targetQ2).HitChance >= Hitch.hitchance(Q2, FirstMenu);
+                //if (ComboMenu.GetCheckBoxValue("UseQBCombo") && Q2.IsReady() && predq)
+                //    {
 
-                        if (targetQ2 != null && targetQ2.IsValidTarget())
-                        {
-                            var predictionQ2 = Q2.GetPrediction(targetQ2);
-                            if (predictionQ2.HitChance >= HitChance.Medium)
-                            {
-                                Q2.Cast(predictionQ2.CastPosition);
-                                return;
-                            }
-                        }
-                    }
+                //        if (targetQ2 != null && targetQ2.IsValidTarget())
+                //        {
+                //            var predictionQ2 = Q2.GetPrediction(targetQ2);
+                //            if (predictionQ2.HitChance >= HitChance.Medium)
+                //            {
+                //                Q2.Cast(predictionQ2.CastPosition);
+                //                return;
+                //            }
+                //        }
+                //    }
 
-                if (Program.getCheckBoxItem(ComboMenu, "UseEBCombo"))
-               {
-                   var te = TargetSelector.GetTarget(E2.Range + W.Range, DamageType.Physical);
-                    if (E2.IsReady() && te.IsValidTarget(E2.Range + W.Range) && Program._player.Distance(te) > Q.Range)
-                    {
-                        var predE22 = SpellsManager.E2.GetPrediction(te);
-                        E2.Cast(predE22.CastPosition);
-                    }
-                }
+               // if (Program.getCheckBoxItem(ComboMenu, "UseEBCombo"))
+               //{
+               //    var te = TargetSelector.GetTarget(E2.Range + W.Range, DamageType.Physical);
+               //     if (E2.IsReady() && te.IsValidTarget(E2.Range + W.Range) && Program._player.Distance(te) > Q.Range)
+               //     {
+               //         var predE22 = SpellsManager.E2.GetPrediction(te);
+               //         E2.Cast(predE22.CastPosition);
+               //     }
+               // }
             }
 
             if (!Program.burrowed)
