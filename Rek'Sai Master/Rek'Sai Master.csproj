@@ -68,6 +68,7 @@
     <Compile Include="ColorSliders.cs" />
     <Compile Include="DamageIndicator.cs" />
     <Compile Include="DrawingsManager.cs" />
+    <Compile Include="Events.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Hitch.cs" />
     <Compile Include="Menus.cs" />

@@ -43,7 +43,8 @@ namespace Eclipse.Modes
 
             if (HarassMenu.GetCheckBoxValue("q2Use") && Q2.IsReady() && predq2)
             {
-                Q2.Cast(target.Position);
+                var predQ2 = SpellsManager.Q2.GetPrediction(targetQ2);
+                Q2.Cast(predQ2.CastPosition);
             }
 
         }

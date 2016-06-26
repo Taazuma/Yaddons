@@ -40,6 +40,7 @@ namespace Eclipse
             if (Player.Instance.ChampionName != "RekSai") return;
             SpellsManager.InitializeSpells();
             DrawingsManager.InitializeDrawings();
+            Events.Initialize();
             Menus.CreateMenu();
             ModeManager.InitializeModes();
             Interrupter.OnInterruptableSpell += Program.Interrupter2_OnInterruptableTarget;
@@ -60,11 +61,15 @@ namespace Eclipse
         public static readonly string[] BuffsThatActuallyMakeSenseToSmite =
        {
                 "SRU_Red", "SRU_Blue", "SRU_Dragon_Water",  "SRU_Dragon_Fire", "SRU_Dragon_Earth", "SRU_Dragon_Air", "SRU_Dragon_Elder",
-                "SRU_Baron", "SRU_Gromp", "SRU_Murkwolf",
-                "SRU_RiftHerald",
-                "SRU_Krug", "Sru_Crab", "TT_Spiderboss",
-                "TT_NGolem", "TT_NWolf", "TT_NWraith"
+                "SRU_Baron", "SRU_RiftHerald", "TT_Spiderboss",
        };
+
+        public readonly static string[] MonstersNames =
+        {
+            "SRU_Dragon_Water", "SRU_Dragon_Fire", "SRU_Dragon_Earth", "SRU_Dragon_Air", "SRU_Dragon_Elder", "Sru_Crab", "SRU_Baron", "SRU_RiftHerald",
+            "SRU_Red", "SRU_Blue",  "SRU_Krug", "SRU_Gromp", "SRU_Murkwolf", "SRU_Razorbeak",
+            "TT_Spiderboss", "TTNGolem", "TTNWolf", "TTNWraith",
+        };
 
         public static bool getCheckBoxItem(Menu m, string item)
         {

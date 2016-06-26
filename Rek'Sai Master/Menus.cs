@@ -72,7 +72,7 @@ namespace Eclipse
             ComboMenu.AddGroupLabel("Combo");
             ComboMenu.AddSeparator();
             ComboMenu.Add("UseQCombo", new CheckBox("Use Q Unburrowed"));
-            ComboMenu.Add("UseQBCombo", new CheckBox("Use Q burrowed"));
+            ComboMenu.Add("UseQBCombo", new CheckBox("Use Q"));
             ComboMenu.AddSeparator();
             ComboMenu.Add("UseWCombo", new CheckBox("Use W"));
             //ComboMenu.CreateCheckBox("Use R", "rUse", false);
@@ -83,9 +83,9 @@ namespace Eclipse
 
 
             HarassMenu.AddGroupLabel("Harass");
-            HarassMenu.CreateCheckBox("Use Q", "qUse");
+            HarassMenu.CreateCheckBox("Use Q", "qUse", false);
             HarassMenu.CreateCheckBox("Use Q2", "q2Use");
-            HarassMenu.CreateCheckBox("Use E", "eUse");
+            HarassMenu.CreateCheckBox("Use E", "eUse", false);
 
             LaneClearMenu.AddGroupLabel("LaneClear");
             LaneClearMenu.CreateCheckBox("Use Q", "qUse");
@@ -109,14 +109,20 @@ namespace Eclipse
             MiscMenu.Add("AutoWMP", new Slider("Use W if Fury is >= ", 100, 1));
             MiscMenu.Add("Inter_W", new CheckBox("Use W to Interrupter"));
             MiscMenu.Add("turnburrowed", new CheckBox("Turn Burrowed if do nothing"));
-            MiscMenu.Add("escapeterino", new KeyBind("Escape", false, KeyBind.BindTypes.HoldActive, 'T'));
+            MiscMenu.AddSeparator(12);
+            MiscMenu.Add("escapeterino", new KeyBind("Escape|WallJump", false, KeyBind.BindTypes.HoldActive, 'T'));
             MiscMenu.AddGroupLabel("Spell Settings");
             if (SpellsManager.Smite.IsLearned)
             {
                 MiscMenu.AddLabel("Smite Spell");
                 MiscMenu.CreateCheckBox("Use Smite to KS", "sks");
                 MiscMenu.CreateCheckBox("Use Smite in JGL", "sjgl");
+                MiscMenu.CreateCheckBox("Use Smite in Fight", "fjgl", false);
                 MiscMenu.Add("smitekey", new KeyBind("Smite Activated", false, KeyBind.BindTypes.PressToggle, 'M'));
+                MiscMenu.AddSeparator(15);
+                MiscMenu.Add("vSmiteDrawSmiteStatus", new CheckBox("Draw Smite Status"));
+                MiscMenu.Add("vSmiteDrawSmiteable", new CheckBox("Draw Smiteable Monsters"));
+                MiscMenu.Add("vSmiteDrawRange", new CheckBox("Draw Smite Range"));
             }
 
             DrawingsMenu.AddGroupLabel("Settings");
@@ -125,18 +131,16 @@ namespace Eclipse
             DrawingsMenu.CreateCheckBox("Draw damage indicator percent.", "perDraw");
             DrawingsMenu.CreateCheckBox("Draw damage indicator statistics.", "statDraw", false);
             DrawingsMenu.AddGroupLabel("Spells");
+            //DrawingsMenu.AddLabel("----------------");
             DrawingsMenu.CreateCheckBox("Draw Q.", "qDraw");
-            //DrawingsMenu.CreateCheckBox("Draw W.", "wDraw");
-            //DrawingsMenu.CreateCheckBox("Draw E.", "eDraw");
-            //DrawingsMenu.CreateCheckBox("Draw R.", "rDraw");
-            //DrawingsMenu.CreateCheckBox("Draw Smite.", "sDraw");
-            //DrawingsMenu.CreateCheckBox("Draw Smite Range.", "srDraw");
+            DrawingsMenu.CreateCheckBox("Draw W.", "wDraw", false);
+            DrawingsMenu.CreateCheckBox("Draw E.", "eDraw");
+            DrawingsMenu.CreateCheckBox("Draw R.", "rDraw", false);
             DrawingsMenu.AddGroupLabel("Drawings Color");
             QColorSlide = new ColorSlide(DrawingsMenu, "qColor", Color.Red, "Q Color:");
-            //WColorSlide = new ColorSlide(DrawingsMenu, "wColor", Color.Purple, "W Color:");
-            //EColorSlide = new ColorSlide(DrawingsMenu, "eColor", Color.Orange, "E Color:");
-            //RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
-            //RColorSlide = new ColorSlide(DrawingsMenu, "sColor", Color.BlanchedAlmond, "Smite Color:");
+            WColorSlide = new ColorSlide(DrawingsMenu, "wColor", Color.Purple, "W Color:");
+            EColorSlide = new ColorSlide(DrawingsMenu, "eColor", Color.Orange, "E Color:");
+            RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
             DamageIndicatorColorSlide = new ColorSlide(DrawingsMenu, "healthColor", Color.YellowGreen, "DamageIndicator Color:");
 
         }

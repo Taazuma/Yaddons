@@ -89,8 +89,9 @@ namespace Eclipse.Modes
                         }
                     }
                 }
-            }            
+            }       //////////////////// END KS E2     
 
+            //////////////////// KS Q2
             var targetKSQ2 = TargetSelector.GetTarget(SpellsManager.Q2.Range, DamageType.Magical);
 
             if (targetKSQ2 != null && Program.burrowed && KillStealMenu.GetCheckBoxValue("qUse") && SpellsManager.Q2.IsReady())
@@ -101,7 +102,7 @@ namespace Eclipse.Modes
                     SpellsManager.Q2.Cast(predQ2.CastPosition);
                     return;
                 }
-            }//////////////////// END KS E2
+            }//////////////////// END KS Q2
 
 
         }
