@@ -111,6 +111,7 @@ namespace Eclipse
             MiscMenu.Add("smartW", new CheckBox("Automatic disable W (Smart)"));
             if (SpellsManager.Smite.IsLearned)
             {
+                MiscMenu.AddGroupLabel("Summoner Spell:");
                 MiscMenu.AddLabel("Smite Spell");
                 MiscMenu.CreateCheckBox("Use Smite to KS", "sks");
                 MiscMenu.CreateCheckBox("Use Smite in JGL", "sjgl");
