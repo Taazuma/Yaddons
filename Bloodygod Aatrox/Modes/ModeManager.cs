@@ -26,7 +26,6 @@ namespace Eclipse.Modes
         {
             var orbMode = Orbwalker.ActiveModesFlags;
 
-            Active.Execute();
 
             if (orbMode.HasFlag(Orbwalker.ActiveModes.Combo))
             {
@@ -52,6 +51,8 @@ namespace Eclipse.Modes
             {
                 JungleClear.Execute();
             }
+
+            Active.Execute();
 
         }
     }

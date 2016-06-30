@@ -47,7 +47,7 @@ namespace Eclipse
                 return;
             }
 
-            if (MiscMenu.GetCheckBoxValue("vSmiteDrawRange") && Smite.IsLearned)
+            if (Smite.IsLearned && MiscMenu.GetCheckBoxValue("vSmiteDrawRange"))
             {
                 Circle.Draw(Color.Gold, SpellsManager.Smite.Range, Player.Instance.Position);
             }

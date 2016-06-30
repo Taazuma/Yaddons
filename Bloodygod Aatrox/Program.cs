@@ -55,7 +55,6 @@ namespace Eclipse
             _player.SetSkinId(skinId());
         }
 
-
         public static float SmiteDmgMonster(Obj_AI_Base target)
         {
             return Player.Instance.GetSummonerSpellDamage(target, DamageLibrary.SummonerSpells.Smite);
