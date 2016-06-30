@@ -22,18 +22,18 @@ namespace Eclipse
         {
             Text = new Text("", new Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold)) { Color = System.Drawing.Color.White };
             Drawing.OnDraw += OnDraw;
-            Orbwalker.OnAttack += OrbwalkerOnOnAttack;
+            //Orbwalker.OnAttack += OrbwalkerOnOnAttack;
         }
 
-        private static void OrbwalkerOnOnAttack(AttackableUnit target, EventArgs args)
-        {
-            if (MiscMenu.GetCheckBoxValue("fjgl") && target is AIHeroClient && SpellsManager.HasChallengingSmite() && 
-                SpellsManager.Smite.IsReady())
-            {
-                var enemyHero = (AIHeroClient) target;
-                SpellsManager.Smite.Cast(enemyHero);
-            }
-        }
+        //private static void OrbwalkerOnOnAttack(AttackableUnit target, EventArgs args)
+        //{
+        //    if (MiscMenu.GetCheckBoxValue("fjgl") && target is AIHeroClient && SpellsManager.HasChallengingSmite() && 
+        //        SpellsManager.Smite.IsReady())
+        //    {
+        //        var enemyHero = (AIHeroClient) target;
+        //        SpellsManager.Smite.Cast(enemyHero);
+        //    }
+        //}
 
 
         public static void Initialize()

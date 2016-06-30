@@ -10,3 +10,4 @@ D:\Tommi\Documents\Visual Studio 2015\Projects\God of Jungel Amumu\God of Jungel
 D:\Tommi\Documents\Visual Studio 2015\Projects\God of Jungel Amumu\God of Jungel Amumu\bin\Release\SharpDX.XInput.dll
 D:\Tommi\Documents\Visual Studio 2015\Projects\God of Jungel Amumu\God of Jungel Amumu\obj\Release\Eclipse Template.exe
 D:\Tommi\Documents\Visual Studio 2015\Projects\God of Jungel Amumu\God of Jungel Amumu\obj\Release\Eclipse Template.pdb
+D:\Tommi\Documents\Visual Studio 2015\Projects\God of Jungel Amumu\God of Jungel Amumu\obj\Release\God of Jungel Amumu.csprojResolveAssemblyReference.cache

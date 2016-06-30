@@ -109,13 +109,18 @@ namespace Eclipse
 
             MiscMenu.AddGroupLabel("Settings");
             MiscMenu.Add("smartW", new CheckBox("Automatic disable W (Smart)"));
+            MiscMenu.AddLabel("Level Up Function");
+            MiscMenu.Add("lvlup", new CheckBox("Auto Level Up Spells", false));
+            MiscMenu.AddSeparator(15);
+            MiscMenu.AddLabel("Skin Settings");
+            MiscMenu.Add("skin.Id", new Slider("Skin Editor", 3, 1, 4));
             if (SpellsManager.Smite.IsLearned)
             {
                 MiscMenu.AddGroupLabel("Summoner Spell:");
                 MiscMenu.AddLabel("Smite Spell");
                 MiscMenu.CreateCheckBox("Use Smite to KS", "sks");
                 MiscMenu.CreateCheckBox("Use Smite in JGL", "sjgl");
-                MiscMenu.CreateCheckBox("Use Smite in Fight", "fjgl", false);
+                //MiscMenu.CreateCheckBox("Use Smite in Fight", "fjgl", false);
                 MiscMenu.Add("smitekey", new KeyBind("Smite Activated", false, KeyBind.BindTypes.PressToggle, 'M'));
                 MiscMenu.AddSeparator(15);
                 MiscMenu.Add("vSmiteDrawSmiteStatus", new CheckBox("Draw Smite Status"));
@@ -140,6 +145,10 @@ namespace Eclipse
             RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
             DamageIndicatorColorSlide = new ColorSlide(DrawingsMenu, "healthColor", Color.YellowGreen, "DamageIndicator Color:");
 
+        }
+        public static int skinId()
+        {
+            return MiscMenu["skin.Id"].Cast<Slider>().CurrentValue;
         }
     }
 }
