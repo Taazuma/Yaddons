@@ -60,7 +60,7 @@ namespace Eclipse
             ComboMenu.Add("WaitForStealth", new CheckBox("Block spells in stealth"));
             ComboMenu.AddSeparator(10);
             ComboMenu.CreateCheckBox("Use R when Low:", "rLow");
-            ComboMenu.Add("AutoWHP", new Slider("If Health % <", 35, 1, 100));
+            ComboMenu.Add("hpR", new Slider("at % HP", 30));
 
             HarassMenu.AddGroupLabel("Harass");
             HarassMenu.CreateCheckBox("Use W", "wUse");
