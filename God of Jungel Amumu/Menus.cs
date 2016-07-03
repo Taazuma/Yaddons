@@ -104,6 +104,7 @@ namespace Eclipse
 
             KillStealMenu.AddGroupLabel("KillSteal");
             KillStealMenu.CreateCheckBox("Use Q", "qUse");
+            KillStealMenu.CreateCheckBox("Use Smite to KS", "sks");
             KillStealMenu.AddGroupLabel("Settings");
             KillStealMenu.CreateSlider("Mana must be higher than [{0}%] to use Harass spells", "manaSlider", 20);
 
@@ -114,19 +115,6 @@ namespace Eclipse
             MiscMenu.AddSeparator(15);
             MiscMenu.AddLabel("Skin Settings");
             MiscMenu.Add("skin.Id", new Slider("Skin Editor", 3, 1, 4));
-            if (SpellsManager.Smite.IsLearned)
-            {
-                MiscMenu.AddGroupLabel("Summoner Spell:");
-                MiscMenu.AddLabel("Smite Spell");
-                MiscMenu.CreateCheckBox("Use Smite to KS", "sks");
-                MiscMenu.CreateCheckBox("Use Smite in JGL", "sjgl");
-                //MiscMenu.CreateCheckBox("Use Smite in Fight", "fjgl", false);
-                MiscMenu.Add("smitekey", new KeyBind("Smite Activated", false, KeyBind.BindTypes.PressToggle, 'M'));
-                MiscMenu.AddSeparator(15);
-                MiscMenu.Add("vSmiteDrawSmiteStatus", new CheckBox("Draw Smite Status"));
-                MiscMenu.Add("vSmiteDrawSmiteable", new CheckBox("Draw Smiteable Monsters"));
-                MiscMenu.Add("vSmiteDrawRange", new CheckBox("Draw Smite Range"));
-            }
 
             DrawingsMenu.AddGroupLabel("Settings");
             DrawingsMenu.CreateCheckBox("Draw spell`s range only if they are ready.", "readyDraw");

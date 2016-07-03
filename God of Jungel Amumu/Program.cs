@@ -32,7 +32,7 @@ namespace Eclipse
         }
         public static int qOff = 0, wOff = 0, eOff = 0, rOff = 0;
         private static int[] AbilitySequence;
-        public const float SmiteRange = 570;
+
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
             //Put the name of the champion here
@@ -40,11 +40,18 @@ namespace Eclipse
             AbilitySequence = new int[] { 2, 3, 1, 3, 3, 4, 3, 1, 3, 1, 4, 1, 1, 2, 2, 4, 2, 2 };
             SpellsManager.InitializeSpells();
             DrawingsManager.InitializeDrawings();
-            Events.Initialize();
             Menus.CreateMenu();
             ModeManager.InitializeModes();
             Game.OnUpdate += OnGameUpdate;
             Game.OnTick += GameOnTick;
+            if (!SpellManager.HasSmite())
+            {
+                Chat.Print("No smite detected - unloading Smite.", System.Drawing.Color.Red);
+                return;
+            }
+            Config.Initialize();
+            ModeManagerSmite.Initialize();
+            Events.Initialize();
         }
 
         private static void OnGameUpdate(EventArgs args)
@@ -75,23 +82,7 @@ namespace Eclipse
             if (rL < level[3]) ObjectManager.Player.Spellbook.LevelSpell(SpellSlot.R);
         }
 
-        public static float SmiteDmgMonster(Obj_AI_Base target)
-        {
-            return Player.Instance.GetSummonerSpellDamage(target, DamageLibrary.SummonerSpells.Smite);
-        }
 
-        public static float SmiteDmgHero(AIHeroClient target)
-        {
-            return Player.Instance.CalculateDamageOnUnit(target, DamageType.True,
-                20.0f + Player.Instance.Level * 8.0f);
-        }
-
-
-        public static readonly string[] BuffsThatActuallyMakeSenseToSmite =
-       {
-                "SRU_Red", "SRU_Blue", "SRU_Dragon_Water",  "SRU_Dragon_Fire", "SRU_Dragon_Earth", "SRU_Dragon_Air", "SRU_Dragon_Elder",
-                "SRU_Baron", "SRU_RiftHerald", "TT_Spiderboss",
-       };
 
         public readonly static string[] MonstersNames =
         {

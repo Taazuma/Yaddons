@@ -24,22 +24,7 @@ namespace Eclipse.Modes
 
         public static void Execute()
         {
-            if (Smite.IsLearned)
-              { 
-            Minion = (Obj_AI_Minion)EntityManager.MinionsAndMonsters.Monsters.FirstOrDefault(buff => Program._player.IsInRange(buff, 570) && (buff.Name.StartsWith(buff.BaseSkinName) || Program.BuffsThatActuallyMakeSenseToSmite.Contains(buff.BaseSkinName)) && !buff.Name.Contains("Mini") && !buff.Name.Contains("Spawn"));
-            AIHeroClient target = TargetSelector.GetTarget(570, DamageType.Magical);
 
-            if (MiscMenu.GetKeyBindValue("smitekey") && Minion.IsValidTarget(570) && Minion.Health < Program.SmiteDmgMonster(Minion) && MiscMenu.GetCheckBoxValue("sjgl") && SpellsManager.Smite.IsReady())
-            {
-                Smite.Cast(Minion);
-            }
-
-            if (target.IsValidTarget(570) && target.Health < Program.SmiteDmgHero(target) && MiscMenu.GetCheckBoxValue("sks") && SpellsManager.Smite.IsReady())
-            {
-                Smite.Cast(target);
-            }
-
-              }
 
             //W autodisable thanks to Sunnyline2
             if (MiscMenu.GetCheckBoxValue("smartW")&& Program.WStatus())
