@@ -36,6 +36,21 @@ namespace Eclipse.Modes
                 }
             }//////////////////// END KS E
 
+            if (Player.Instance.CountEnemiesInRange(R.Range) >= 1 || Player.Instance.HealthPercent <= 20 && R.IsReady() && ComboMenu.GetCheckBoxValue("rLow"))
+            {
+                R.Cast();
+            }
+
+            if (Player.HasBuff("zedulttargetmark"))
+            {
+                if (R.IsReady() && MiscMenu.GetCheckBoxValue("zedr"))
+                {
+                    R.Cast();
+                }
+            }
+
+
+
         }
 
     }

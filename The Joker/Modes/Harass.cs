@@ -25,6 +25,12 @@ namespace Eclipse.Modes
 
             if (target == null) return;
 
+
+            if (Eclipse.Menus.HarassMenu.GetCheckBoxValue("eUse") && E.IsReady() && target.IsValidTarget(E.Range))
+            {
+                E.Cast(target);
+            }
+
             if (W.IsReady() && Eclipse.Menus.HarassMenu.GetCheckBoxValue("wUse"))
             {
                 if (!wtarget.IsValidTarget(W.Range))
@@ -33,10 +39,6 @@ namespace Eclipse.Modes
                 }
             }
 
-            if (Eclipse.Menus.HarassMenu.GetCheckBoxValue("eUse") && E.IsReady() && target.IsValidTarget(E.Range))
-            {
-                E.Cast(target);
-            }
 
         }
     }

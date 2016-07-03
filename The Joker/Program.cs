@@ -257,12 +257,12 @@ namespace Eclipse
 
         }
 
-        static void Obj_AI_Base_OnProcessSpellCaster(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        private static void Obj_AI_Base_OnProcessSpellCaster(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
-            if (!MiscMenu.GetCheckBoxValue("evade")) return;
             if (sender.IsAlly) return;
-            //if (!sender.IsChampion()) return;
 
+            if (MiscMenu.GetCheckBoxValue("evade"))
+            { 
             //Need to calc Delay/Time for misille to hit !
 
             if (DangerDB.TargetedList.Contains(args.SData.Name))
@@ -283,6 +283,7 @@ namespace Eclipse
                 {
                     R.Cast();
                 }
+            }
             }
         }
 

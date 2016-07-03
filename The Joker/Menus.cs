@@ -36,7 +36,7 @@ namespace Eclipse
 
         public static void CreateMenu()
         {
-            FirstMenu = MainMenu.AddMenu("Taazuma "+Player.Instance.ChampionName, Player.Instance.ChampionName.ToLower() + "taazuma");
+            FirstMenu = MainMenu.AddMenu("The Joker "+Player.Instance.ChampionName, Player.Instance.ChampionName.ToLower() + "thejoker");
 			FirstMenu.AddGroupLabel("Addon by Taazuma / Thanks for using it");
             FirstMenu.AddLabel("If you found any bugs report it on my Thread");
             FirstMenu.AddLabel("Have fun with Playing");
@@ -58,6 +58,7 @@ namespace Eclipse
             ComboMenu.AddLabel("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             ComboMenu.Add("useClone", new CheckBox("Clone Mover"));
             ComboMenu.Add("WaitForStealth", new CheckBox("Block spells in stealth"));
+            ComboMenu.CreateCheckBox("Use R when Low", "rLow");
 
             HarassMenu.AddGroupLabel("Harass");
             HarassMenu.CreateCheckBox("Use W", "wUse");
@@ -101,18 +102,19 @@ namespace Eclipse
             DamageIndicatorColorSlide = new ColorSlide(DrawingsMenu, "healthColor", Color.YellowGreen, "DamageIndicator Color:");
 
             MiscMenu.AddGroupLabel("Settings");
+            MiscMenu.CreateCheckBox("Use R -> Zed Ult", "zedr");
             MiscMenu.CreateCheckBox("Use Evade", "evade");
             MiscMenu.Add("usercc", new CheckBox("Dodge targeted cc"));
             MiscMenu.Add("autoMoveClone", new CheckBox("Always move clone"));
             StringList(MiscMenu, "ghostTarget", "Ghost target priority", new[] { "Targetselector", "Lowest health", "Closest to you" }, 0);
-            //MiscMenu.Add("stackBox", new KeyBind("Stack boxes", false, KeyBind.BindTypes.HoldActive, "T".ToCharArray()[0]));
+            MiscMenu.Add("stackBox", new KeyBind("Stack boxes", false, KeyBind.BindTypes.HoldActive, "Z".ToCharArray()[0]));
             MiscMenu.CreateCheckBox("Q - Escaper", "qescape");
             MiscMenu.CreateCheckBox("R Clone - Escaper", "cescape");
             MiscMenu.AddLabel("Level Up Function");
             MiscMenu.Add("lvlup", new CheckBox("Auto Level Up Spells", false));
             MiscMenu.AddSeparator(15);
             MiscMenu.AddLabel("Skin Settings");
-            MiscMenu.Add("skin.Id", new Slider("Skin Editor", 3, 1, 4));
+            MiscMenu.Add("skin.Id", new Slider("Skin Editor", 1, 0, 8));
 
         }
         public static int skinId()
