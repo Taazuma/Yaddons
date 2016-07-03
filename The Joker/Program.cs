@@ -140,30 +140,6 @@ namespace Eclipse
             if (ShacoClone && !GhostDelay && MiscMenu["autoMoveClone"].Cast<CheckBox>().CurrentValue)
             {
                 moveClone();
-                if (MiscMenu["stackBox"].Cast<KeyBind>().CurrentValue && W.IsReady())
-                {
-                    var box =
-                        ObjectManager.Get<Obj_AI_Minion>()
-                            .Where(m => m.Distance(player) < W.Range && m.Name == "Jack In The Box" && !m.IsDead)
-                            .OrderBy(m => m.Distance(Game.CursorPos))
-                            .FirstOrDefault();
-
-                    if (box != null)
-                    {
-                        W.Cast(box.Position);
-                    }
-                    else
-                    {
-                        if (player.Distance(Game.CursorPos) < W.Range)
-                        {
-                            W.Cast(Game.CursorPos);
-                        }
-                        else
-                        {
-                            W.Cast(player.Position.Extend(Game.CursorPos, W.Range));
-                        }
-                    }
-                }
             }
             //
         }
@@ -340,6 +316,15 @@ namespace Eclipse
                        LastAATick + Game.Ping + 100 + (clone.AttackDelay - clone.AttackCastDelay) * 1000;
             }
             return false;
+        }
+
+        public static void RSaver()
+        {
+            var HealthR = MiscMenu["AutoWHP"].Cast<Slider>().CurrentValue;
+            if (R.IsLearned && Player.Instance.CountEnemiesInRange(R.Range) >= 1 || _player.HealthPercent != HealthR && R.IsReady() && ComboMenu.GetCheckBoxValue("rLow"))
+            {
+                R.Cast();
+            }
         }
 
         public static void moveClone()

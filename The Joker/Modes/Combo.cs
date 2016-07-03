@@ -84,6 +84,12 @@ namespace Eclipse.Modes
                 R2.Cast();
             }
 
+            var HealthR = MiscMenu["AutoWHP"].Cast<Slider>().CurrentValue;
+            if (_player.HealthPercent <= HealthR && R.IsReady() && ComboMenu.GetCheckBoxValue("rLow"))
+            {
+                R.Cast();
+            }
+
         }
         }
 }

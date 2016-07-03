@@ -58,7 +58,9 @@ namespace Eclipse
             ComboMenu.AddLabel("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             ComboMenu.Add("useClone", new CheckBox("Clone Mover"));
             ComboMenu.Add("WaitForStealth", new CheckBox("Block spells in stealth"));
-            ComboMenu.CreateCheckBox("Use R when Low", "rLow");
+            ComboMenu.AddSeparator(10);
+            ComboMenu.CreateCheckBox("Use R when Low:", "rLow");
+            ComboMenu.Add("AutoWHP", new Slider("If Health % <", 35, 1, 100));
 
             HarassMenu.AddGroupLabel("Harass");
             HarassMenu.CreateCheckBox("Use W", "wUse");
@@ -70,7 +72,7 @@ namespace Eclipse
             LaneClearMenu.CreateCheckBox("Use W", "wUse");
             LaneClearMenu.CreateCheckBox("Use E", "eUse");
             LaneClearMenu.AddGroupLabel("Settings");
-            LaneClearMenu.CreateSlider("Mana must be higher than [{0}%] to use Harass spells", "manaSlider", 40);
+            LaneClearMenu.CreateSlider("Mana must be higher than [{0}%] to use Harass spells", "manaSlider", 60);
 
             JungleClearMenu.AddGroupLabel("JungleClear");
             JungleClearMenu.CreateCheckBox("Use W", "wUse");
@@ -90,10 +92,10 @@ namespace Eclipse
             DrawingsMenu.CreateCheckBox("Draw damage indicator percent.", "perDraw");
             DrawingsMenu.CreateCheckBox("Draw damage indicator statistics.", "statDraw", false);
             DrawingsMenu.AddGroupLabel("Spells");
-            DrawingsMenu.CreateCheckBox("Draw Q.", "qDraw");
-            DrawingsMenu.CreateCheckBox("Draw W.", "wDraw");
-            DrawingsMenu.CreateCheckBox("Draw E.", "eDraw");
-            DrawingsMenu.CreateCheckBox("Draw R.", "rDraw");
+            DrawingsMenu.CreateCheckBox("Draw Q.", "qDraw", false);
+            DrawingsMenu.CreateCheckBox("Draw W.", "wDraw", false);
+            DrawingsMenu.CreateCheckBox("Draw E.", "eDraw", false);
+            DrawingsMenu.CreateCheckBox("Draw R.", "rDraw", false);
             DrawingsMenu.AddGroupLabel("Drawings Color");
             QColorSlide = new ColorSlide(DrawingsMenu, "qColor", Color.Red, "Q Color:");
             WColorSlide = new ColorSlide(DrawingsMenu, "wColor", Color.Purple, "W Color:");
@@ -102,13 +104,13 @@ namespace Eclipse
             DamageIndicatorColorSlide = new ColorSlide(DrawingsMenu, "healthColor", Color.YellowGreen, "DamageIndicator Color:");
 
             MiscMenu.AddGroupLabel("Settings");
-            MiscMenu.CreateCheckBox("Use R -> Zed Ult", "zedr");
             MiscMenu.CreateCheckBox("Use Evade", "evade");
             MiscMenu.Add("usercc", new CheckBox("Dodge targeted cc"));
             MiscMenu.Add("autoMoveClone", new CheckBox("Always move clone"));
             StringList(MiscMenu, "ghostTarget", "Ghost target priority", new[] { "Targetselector", "Lowest health", "Closest to you" }, 0);
-            MiscMenu.Add("stackBox", new KeyBind("Stack boxes", false, KeyBind.BindTypes.HoldActive, "Z".ToCharArray()[0]));
+            //MiscMenu.Add("stackBox", new KeyBind("Stack boxes", false, KeyBind.BindTypes.HoldActive, "Z".ToCharArray()[0]));
             MiscMenu.CreateCheckBox("Q - Escaper", "qescape");
+            MiscMenu.AddSeparator(15);
             MiscMenu.CreateCheckBox("R Clone - Escaper", "cescape");
             MiscMenu.AddLabel("Level Up Function");
             MiscMenu.Add("lvlup", new CheckBox("Auto Level Up Spells", false));
