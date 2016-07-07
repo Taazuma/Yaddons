@@ -21,37 +21,16 @@ namespace Eclipse
         public static Spell.Active W;
         public static Spell.Active E;
         public static Spell.Active R;
-        public static Spell.Targeted Smite { get; private set; }
 
 
         public static void InitializeSpells()
         {
-            var smite = Player.Spells.FirstOrDefault(s => s.SData.Name.ToLower().Contains("smite"));
-            if (smite != null)
-            Smite = new Spell.Targeted(smite.Slot, 570);
             Q = new Spell.Targeted(SpellSlot.Q, 700);
             W = new Spell.Active(SpellSlot.W);
             E = new Spell.Active(SpellSlot.E, 187);
             R = new Spell.Active(SpellSlot.R);
         }
 
-        public static bool HasSmite()
-        {
-            return Smite != null;
-        }
-
-        public static bool HasChillingSmite()
-        {
-
-            return Smite != null &&
-                   Smite.Name.Equals("s5_summonersmiteplayerganker", StringComparison.CurrentCultureIgnoreCase);
-        }
-
-        public static bool HasChallengingSmite()
-        {
-            return Smite != null &&
-                   Smite.Name.Equals("s5_summonersmiteduel", StringComparison.CurrentCultureIgnoreCase);
-        }
 
         #region Damages
 

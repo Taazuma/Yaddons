@@ -97,8 +97,6 @@ namespace Eclipse
             DrawingsMenu.CreateCheckBox("Draw damage indicator percent.", "perDraw");
             DrawingsMenu.CreateCheckBox("Draw damage indicator statistics.", "statDraw", false);
             DrawingsMenu.AddGroupLabel("Spells");
-            //DrawingsMenu.CreateCheckBox("Draw Smite Status", "smitedraw");
-            //DrawingsMenu.AddLabel("----------------");
             DrawingsMenu.CreateCheckBox("Draw Q.", "qDraw");
             DrawingsMenu.CreateCheckBox("Draw W.", "wDraw", false);
             DrawingsMenu.CreateCheckBox("Draw E.", "eDraw");
@@ -110,14 +108,6 @@ namespace Eclipse
             RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
             DamageIndicatorColorSlide = new ColorSlide(DrawingsMenu, "healthColor", Color.YellowGreen, "DamageIndicator Color:");
 
-            MiscMenu.AddGroupLabel("Spell Settings");
-            if (SpellsManager.Smite.IsLearned)
-            {
-            MiscMenu.AddLabel("Smite Spell");
-            MiscMenu.CreateCheckBox("Use Smite to KS", "sks");
-            MiscMenu.CreateCheckBox("Use Smite in JGL", "sjgl");
-            MiscMenu.Add("smitekey", new KeyBind("Smite Activated", false, KeyBind.BindTypes.PressToggle, 'M'));
-            }
 
 
 

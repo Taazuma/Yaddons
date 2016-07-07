@@ -31,7 +31,6 @@ namespace Eclipse
 
         }
 
-        public const float SmiteRange = 570;
 
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
@@ -44,6 +43,14 @@ namespace Eclipse
             Obj_AI_Base.OnProcessSpellCast += OnProcessSpellCast;
             OnDoCast();
             Killsteal();
+            if (!SpellManager.HasSmite())
+            {
+                Chat.Print("No smite detected - unloading Smite.", System.Drawing.Color.Red);
+                return;
+            }
+            Config.Initialize();
+            ModeManagerSmite.Initialize();
+            Events.Initialize();
         }
 
         public static bool getCheckBoxItem(Menu m, string item)
@@ -66,26 +73,6 @@ namespace Eclipse
             return m[item].Cast<ComboBox>().CurrentValue;
         }
 
-        public static float SmiteDmgMonster(Obj_AI_Base target)
-        {
-            return Player.Instance.GetSummonerSpellDamage(target, DamageLibrary.SummonerSpells.Smite);
-        }
-
-        public static float SmiteDmgHero(AIHeroClient target)
-        {
-            return Player.Instance.CalculateDamageOnUnit(target, DamageType.True,
-                20.0f + Player.Instance.Level * 8.0f);
-        }
-
-
-        public static readonly string[] BuffsThatActuallyMakeSenseToSmite =
-       {
-                "SRU_Red", "SRU_Blue", "SRU_Dragon_Water",  "SRU_Dragon_Fire", "SRU_Dragon_Earth", "SRU_Dragon_Air", "SRU_Dragon_Elder",
-                "SRU_Baron", "SRU_Gromp", "SRU_Murkwolf",
-                "SRU_Razorbeak", "SRU_RiftHerald",
-                "SRU_Krug", "Sru_Crab", "TT_Spiderboss",
-                "TT_NGolem", "TT_NWolf", "TT_NWraith"
-            };
 
         private static void OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
