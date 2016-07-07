@@ -111,19 +111,7 @@ namespace Eclipse
             MiscMenu.Add("turnburrowed", new CheckBox("Turn Burrowed if do nothing"));
             MiscMenu.AddSeparator(12);
             MiscMenu.Add("escapeterino", new KeyBind("Escape|WallJump", false, KeyBind.BindTypes.HoldActive, 'T'));
-            MiscMenu.AddGroupLabel("Spell Settings");
-            if (SpellsManager.Smite.IsLearned)
-            {
-                MiscMenu.AddLabel("Smite Spell");
-                MiscMenu.CreateCheckBox("Use Smite to KS", "sks");
-                MiscMenu.CreateCheckBox("Use Smite in JGL", "sjgl");
-                MiscMenu.CreateCheckBox("Use Smite in Fight", "fjgl", false);
-                MiscMenu.Add("smitekey", new KeyBind("Smite Activated", false, KeyBind.BindTypes.PressToggle, 'M'));
-                MiscMenu.AddSeparator(15);
-                MiscMenu.Add("vSmiteDrawSmiteStatus", new CheckBox("Draw Smite Status"));
-                MiscMenu.Add("vSmiteDrawSmiteable", new CheckBox("Draw Smiteable Monsters"));
-                MiscMenu.Add("vSmiteDrawRange", new CheckBox("Draw Smite Range"));
-            }
+            //MiscMenu.AddGroupLabel("Spell Settings");
 
             DrawingsMenu.AddGroupLabel("Settings");
             DrawingsMenu.CreateCheckBox("Draw spell`s range only if they are ready.", "readyDraw");

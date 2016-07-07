@@ -24,13 +24,9 @@ namespace Eclipse
         public static Spell.Skillshot Q2;
         public static Spell.Skillshot E2;
         public static Spell.Targeted R;
-        public static Spell.Targeted Smite { get; private set; }
 
         public static void InitializeSpells()
         {
-            var smite = Player.Spells.FirstOrDefault(s => s.SData.Name.ToLower().Contains("smite"));
-            if (smite != null)
-            Smite = new Spell.Targeted(smite.Slot, 570);
             Q = new Spell.Active(SpellSlot.Q, 300);
             W = new Spell.Active(SpellSlot.W, 200);
             E = new Spell.Targeted(SpellSlot.E, 250);
@@ -39,23 +35,7 @@ namespace Eclipse
             E2 = new Spell.Skillshot(SpellSlot.E, 700, SkillShotType.Linear);
         }
 
-        public static bool HasSmite()
-        {
-            return Smite != null;
-        }
 
-        public static bool HasChillingSmite()
-        {
-
-            return Smite != null &&
-                   Smite.Name.Equals("s5_summonersmiteplayerganker", StringComparison.CurrentCultureIgnoreCase);
-        }
-
-        public static bool HasChallengingSmite()
-        {
-            return Smite != null &&
-            Smite.Name.Equals("s5_summonersmiteduel", StringComparison.CurrentCultureIgnoreCase);
-        }
 
         #region Damages
 

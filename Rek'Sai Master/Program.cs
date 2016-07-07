@@ -32,7 +32,6 @@ namespace Eclipse
 
         }
         private const string Activeq = "RekSaiQ";
-        public const float SmiteRange = 570;
         public static bool burrowed = false;
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
@@ -40,36 +39,19 @@ namespace Eclipse
             if (Player.Instance.ChampionName != "RekSai") return;
             SpellsManager.InitializeSpells();
             DrawingsManager.InitializeDrawings();
-            Events.Initialize();
             Menus.CreateMenu();
             ModeManager.InitializeModes();
             Interrupter.OnInterruptableSpell += Program.Interrupter2_OnInterruptableTarget;
             Orbwalker.OnPostAttack += OnAfterAttack;
+            if (!SpellManager.HasSmite())
+            {
+                Chat.Print("No smite detected - unloading Smite.", System.Drawing.Color.Red);
+                return;
+            }
+            Config.Initialize();
+            ModeManagerSmite.Initialize();
+            Events.Initialize();
         }
-
-        public static float SmiteDmgMonster(Obj_AI_Base target)
-        {
-            return Player.Instance.GetSummonerSpellDamage(target, DamageLibrary.SummonerSpells.Smite);
-        }
-
-        public static float SmiteDmgHero(AIHeroClient target)
-        {
-            return Player.Instance.CalculateDamageOnUnit(target, DamageType.True,
-                20.0f + Player.Instance.Level * 8.0f);
-        }
-
-        public static readonly string[] BuffsThatActuallyMakeSenseToSmite =
-       {
-                "SRU_Red", "SRU_Blue", "SRU_Dragon_Water",  "SRU_Dragon_Fire", "SRU_Dragon_Earth", "SRU_Dragon_Air", "SRU_Dragon_Elder",
-                "SRU_Baron", "SRU_RiftHerald", "TT_Spiderboss",
-       };
-
-        public readonly static string[] MonstersNames =
-        {
-            "SRU_Dragon_Water", "SRU_Dragon_Fire", "SRU_Dragon_Earth", "SRU_Dragon_Air", "SRU_Dragon_Elder", "Sru_Crab", "SRU_Baron", "SRU_RiftHerald",
-            "SRU_Red", "SRU_Blue",  "SRU_Krug", "SRU_Gromp", "SRU_Murkwolf", "SRU_Razorbeak",
-            "TT_Spiderboss", "TTNGolem", "TTNWolf", "TTNWraith",
-        };
 
         public static bool getCheckBoxItem(Menu m, string item)
         {

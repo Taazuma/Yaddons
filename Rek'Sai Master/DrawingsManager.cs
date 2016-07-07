@@ -47,36 +47,7 @@ namespace Eclipse
                 Circle.Draw(RColorSlide.GetSharpColor(), R.Range, 1f, Player.Instance);
             }
 
-            //if (Smite.IsLearned)
-            //{ 
-            //    Minion = (Obj_AI_Minion)EntityManager.MinionsAndMonsters.Monsters.FirstOrDefault(buff => Program._player.IsInRange(buff, 570) && (buff.Name.StartsWith(buff.BaseSkinName) || Program.BuffsThatActuallyMakeSenseToSmite.Contains(buff.BaseSkinName)) && !buff.Name.Contains("Mini") && !buff.Name.Contains("Spawn"));
-            //    AIHeroClient target = TargetSelector.GetTarget(570, DamageType.Magical);
-            //    var playerPos = Drawing.WorldToScreen(Program._player.Position);
-            //    var enemyPos = Drawing.WorldToScreen(target.Position);
-            //    var MonsterPos = Drawing.WorldToScreen(Minion.Position);
-            //    var smitedraw = DrawingsMenu.GetCheckBoxValue("smitedraw");
-            //    var readyDraws = DrawingsMenu.GetCheckBoxValue("readyDraw");
-
-            //    if (DrawingsMenu.GetCheckBoxValue("smitedraw") && readyDraws ? Smite.IsReady() : DrawingsMenu.GetCheckBoxValue("smitedraw"))
-            //    {
-            //        Drawing.DrawText(Hero.Position.WorldToScreen().X - 70, Hero.Position.WorldToScreen().Y + 40, Color.GhostWhite, "Smite active");
-            //    }
-
-            //    if (Smite.IsOnCooldown && DrawingsMenu.GetCheckBoxValue("smitedraw"))
-            //    {
-            //        Drawing.DrawText(playerPos.X - 70, playerPos.Y + 40, Color.Red, "Smite cooldown");
-            //    }
-
-            //    if (target.Health < Program.SmiteDmgHero(target) && MiscMenu.GetCheckBoxValue("sks") && smitedraw)
-            //    {
-            //        Drawing.DrawText(enemyPos.X - 70, enemyPos.Y + 40, Color.Fuchsia, "Smite killable");
-            //    }
-
-            //    if (Minion.Health < Program.SmiteDmgMonster(Minion) && MiscMenu.GetCheckBoxValue("sjgl"))
-            //    {
-            //        Drawing.DrawText(MonsterPos.X - 70, MonsterPos.Y + 40, Color.IndianRed, "Smite killable");
-            //    }
-            //}
+           
 
         }
 
