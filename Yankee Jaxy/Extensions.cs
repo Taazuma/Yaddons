@@ -14,6 +14,7 @@ namespace Eclipse
 {
     public static class Extensions
     {
+        public static Dictionary<string, Dictionary<string, Dictionary<Menu, Dictionary<string, Values>>>> Menus = new Dictionary<string, Dictionary<string, Dictionary<Menu, Dictionary<string, Values>>>>();
         #region Vector
         /// <summary>
         /// Checks if the position is solid
@@ -354,5 +355,20 @@ namespace Eclipse
         }
 
         #endregion GetTargetHelper
+
+        public enum Values
+        {
+            Checkbox = 0, Slider = 1, KeyBind = 2
+        };
+
+        public static void NewKeybind(this Menu menu, string identifier, string displayName, bool defaultValue, KeyBind.BindTypes bindType, char key, bool separatorBefore = false)
+        {
+            if (separatorBefore) menu.AddSeparator();
+
+            menu.Add(identifier, new KeyBind(displayName, defaultValue, bindType, key));
+
+            Menus[menu.Parent.DisplayName][menu.DisplayName][menu].Add(identifier, Values.KeyBind);
+        }
+
     }
 }

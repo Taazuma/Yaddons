@@ -53,6 +53,8 @@ namespace Eclipse.Modes
                     }
                 }
 
+                if (W.IsReady() && ComboMenu.GetCheckBoxValue ("waareset") && (Q.IsReady() || Program._player.IsInAutoAttackRange(target)) && W.Cast()) Orbwalker.ResetAutoAttack();
+
                 if (target.HealthPercent > 20)
                 {
                     if ((Program.getCheckBoxItem(ComboMenu, "rUse") && Q.IsReady() && R.IsReady()) ||

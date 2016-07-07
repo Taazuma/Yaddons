@@ -31,6 +31,7 @@ namespace Eclipse
 
         }
 
+        static float WardTick;
 
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
@@ -72,6 +73,15 @@ namespace Eclipse
         {
             return m[item].Cast<ComboBox>().CurrentValue;
         }
+
+        private static readonly Item[] Wards =
+             {
+                    new Item(ItemId.Warding_Totem_Trinket, 600f), new Item(ItemId.Sightstone, 600f), new Item(ItemId.Ruby_Sightstone, 600f),
+                    new Item(ItemId.Eye_of_the_Oasis, 600f), new Item(ItemId.Eye_of_the_Equinox, 600f), new Item(ItemId.Trackers_Knife, 600f),
+                    new Item(ItemId.Trackers_Knife_Enchantment_Warrior, 600f), new Item(ItemId.Trackers_Knife_Enchantment_Runic_Echoes, 600f),
+                    new Item(ItemId.Trackers_Knife_Enchantment_Sated_Devourer, 600f), new Item(ItemId.Trackers_Knife_Enchantment_Devourer, 600f),
+                    new Item(ItemId.Trackers_Knife_Enchantment_Cinderhulk, 600f), new Item(ItemId.Eye_of_the_Watchers, 600f),
+                };
 
 
         private static void OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
@@ -127,60 +137,64 @@ namespace Eclipse
             };
         }
 
-        //public static void WardJump()
-        //{
-        //    EloBuddy.Player.IssueOrder(GameObjectOrder.MoveTo, Game.CursorPos);
-        //    if (!Q.IsReady())
-        //    {
-        //        return;
-        //    }
-        //    Vector3 wardJumpPosition = (_player.Position.Distance(Game.CursorPos) < 600) ? Game.CursorPos : _player.Position.Distance(Game.CursorPos, 600);
-        //    var lstGameObjects = ObjectManager.Get<Obj_AI_Base>().ToArray();
-        //    Obj_AI_Base entityToWardJump = lstGameObjects.FirstOrDefault(obj =>
-        //        obj.Position.Distance(wardJumpPosition) < 150
-        //        && (obj is Obj_AI_Minion || obj is AIHeroClient)
-        //        && !obj.IsMe && !obj.IsDead
-        //        && obj.Position.Distance(_player.Position) < Q.Range);
 
-        //    if (entityToWardJump != null)
-        //    {
-        //        Q.Cast(entityToWardJump);
-        //    }
-        //    else
-        //    {
-        //        int wardId = GetWardItem();
+        public static void WardJumper()
+        {
+            //----------------------------------------------Ward Jump---------------------------------------
+            if (Q.IsReady() && MiscMenu.GetKeyBindValue("wardjump") && Environment.TickCount - WardTick >= 2000)
+            {
+                var CursorPos = Game.CursorPos;
+                float WardTick;
+                Obj_AI_Base JumpPlace = EntityManager.Heroes.Allies.FirstOrDefault(it => it.Distance(CursorPos) <= 250 && Q.IsInRange(it));
 
+                if (JumpPlace != default(Obj_AI_Base)) Q.Cast(JumpPlace);
+                else
+                {
+                    JumpPlace = EntityManager.MinionsAndMonsters.Minions.FirstOrDefault(it => it.Distance(CursorPos) <= 250 && Q.IsInRange(it));
 
-        //        if (wardId != -1 && !wardJumpPosition.IsWall())
-        //        {
-        //            PutWard(wardJumpPosition.To2D(), (ItemId)wardId);
-        //            lstGameObjects = ObjectManager.Get<Obj_AI_Base>().ToArray();
-        //            Q.Cast(
-        //                lstGameObjects.FirstOrDefault(obj =>
-        //                obj.Position.Distance(wardJumpPosition) < 150 &&
-        //                obj is Obj_AI_Minion && obj.Position.Distance(_player.Position) < Q.Range));
-        //        }
-        //    }
-        //}
+                    if (JumpPlace != default(Obj_AI_Base)) Q.Cast(JumpPlace);
+                    else if (JumpWard() != default(InventorySlot))
+                    {
+                        var Ward = JumpWard();
+                        CursorPos = _player.Position.Extend(CursorPos, 600).To3D();
+                        Ward.Cast(CursorPos);
+                        WardTick = Environment.TickCount;
+                        Core.DelayAction(() => WardJump(CursorPos), Game.Ping + 100);
+                    }
+                }
+
+            }
+        }
 
 
-        //public static int GetWardItem()
-        //{
-        //    int[] wardItems = { 3340, 3350, 3205, 3207, 2049, 2045, 2044, 3361, 3154, 3362, 3160, 2043 };
-        //    foreach (var id in wardItems.Where(id => Items.HasItem(id) && Items.CanUseItem(id)))
-        //        return id;
-        //    return -1;
-        //}
+        //------------------------------------|| Methods ||--------------------------------------Credits to WU
 
-        //public static void PutWard(Vector2 pos, ItemId warditem)
-        //{
+        //---------------------------------------------WardJump()-------------------------------------------------Credits to WU
 
-        //    foreach (var slot in _player.InventoryItems.Where(slot => slot.Id == warditem))
-        //    {
-        //        ObjectManager.Player.Spellbook.CastSpell(slot.SpellSlot, pos.To3D());
-        //        return;
-        //    }
-        //}
+        public static void WardJump(Vector3 cursorpos)
+        {
+            var Ward = ObjectManager.Get<Obj_AI_Base>().FirstOrDefault(it => it.IsValidTarget(Q.Range) && it.Distance(cursorpos) <= 250);
+            if (Ward != null) Q.Cast(Ward);
+        }
+
+        //---------------------------------------------JumpWard()-------------------------------------------------- Credits to WU
+
+        public static InventorySlot JumpWard()
+        {
+            var Inventory = Program._player.InventoryItems;
+
+            if (Item.CanUseItem(3340)) return Inventory.First(it => it.Id == ItemId.Warding_Totem_Trinket);
+            if (Item.CanUseItem(2049)) return Inventory.First(it => it.Id == ItemId.Sightstone);
+            if (Item.CanUseItem(2045)) return Inventory.First(it => it.Id == ItemId.Ruby_Sightstone);
+            if (Item.CanUseItem(3711)) return Inventory.First(it => (int)it.Id == 3711); //Tracker's Knife
+            if (Item.CanUseItem(2301)) return Inventory.First(it => (int)it.Id == 2301); //Eye of the Watchers
+            if (Item.CanUseItem(2302)) return Inventory.First(it => (int)it.Id == 2302); //Eye of the Oasis
+            if (Item.CanUseItem(2303)) return Inventory.First(it => (int)it.Id == 2303); //Eye of the Equinox
+            if (Item.CanUseItem(2043)) return Inventory.First(it => it.Id == ItemId.Vision_Ward);
+
+            return default(InventorySlot);
+        }
+        // Credits END WU
 
 
     }

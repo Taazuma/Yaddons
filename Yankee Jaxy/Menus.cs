@@ -55,6 +55,7 @@ namespace Eclipse
             ComboMenu.Add("q2Use", new CheckBox("Use Q when enemy is in AA Range", false));
             ComboMenu.AddLabel("----------------");
             ComboMenu.CreateCheckBox("Use W", "wUse");
+            ComboMenu.CreateCheckBox("Use W AA Reset", "waareset", false);
             ComboMenu.AddLabel("----------------");
             ComboMenu.CreateCheckBox("Use E", "eUse");
             ComboMenu.Add("e2Use", new CheckBox("Use second E"));
@@ -108,6 +109,9 @@ namespace Eclipse
             RColorSlide = new ColorSlide(DrawingsMenu, "rColor", Color.DeepPink, "R Color:");
             DamageIndicatorColorSlide = new ColorSlide(DrawingsMenu, "healthColor", Color.YellowGreen, "DamageIndicator Color:");
 
+            MiscMenu.AddGroupLabel("Misc Settings:");
+            MiscMenu.CreateKeyBind("Enable/Disable Ward Jump", "wardjump", 'Z', 'U');
+            MiscMenu.AddLabel("--------------------------------------------------------------------------");
 
 
 

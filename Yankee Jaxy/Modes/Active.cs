@@ -20,13 +20,12 @@ namespace Eclipse.Modes
 {
     internal class Active
     {
-        public static Obj_AI_Minion Minion;
-
 
         public static void Execute()
         {
-           
+            Program.WardJumper();
+         }
 
         }
     }
-}
+
